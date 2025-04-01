@@ -384,7 +384,7 @@ function App() {
     }
   
     try {
-      const response = await axios.post('https://labx-query-96llz8jrs-aditya-dinesh-patils-projects.vercel.app/query', { query });
+      const response = await axios.post('https://labx-query.vercel.app/query', { query });
   
       console.log("Full Response:", response);
   
