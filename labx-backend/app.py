@@ -8,7 +8,7 @@ import re
 import json
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["http://localhost:3000", "https://labx-query-8rr8.vercel.app/"], supports_credentials=True)
 
 # Path to your CSV files
 DATA_FILES = {
