@@ -46,6 +46,7 @@ def clean_generated_code(code):
     return code
 @app.route('/query', methods=['POST'])
 def process_query():
+    print(DATA_FILES)
     data = request.json
     user_query = data.get('query', '')
     if not user_query:
