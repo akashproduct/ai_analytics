@@ -385,7 +385,7 @@ function App() {
   
     try {
       const response = await axios.post('https://labx-query.vercel.app/query', { query });
-  
+      //const response = await axios.post('http://localhost:5000/query', { query });
       console.log("Full Response:", response);
   
       // Ensure response.data is a JSON object
