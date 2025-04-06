@@ -11,10 +11,5 @@
         "Access-Control-Allow-Headers": "Content-Type, Authorization"
       }
     }
-  ],
-  "functions": {
-    "app.py": {
-      "includeFiles": "Data_AI_Query.xlsx"
-    }
-  }
+  ]
 }
