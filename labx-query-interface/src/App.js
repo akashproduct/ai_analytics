@@ -386,7 +386,7 @@ function App() {
     try {
       // const response = await axios.post('https://labx-query.vercel.app/query', { query });
       // const response = await axios.post('http://localhost:5000/query', { query });
-      const response = await axios.post('https://0b3b-2409-40d1-8e-32d4-2478-129f-8563-b206.ngrok-free.app/query', { query });
+      const response = await axios.post('https://2da4-2409-40d1-a-3af9-f172-4049-6c21-e7b9.ngrok-free.app/query', { query });
 
       console.log("Full Response:", response);
   
