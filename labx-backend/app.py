@@ -8,20 +8,20 @@ import re
 import json
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:3000", "https://labx-query-8rr8.vercel.app/"], supports_credentials=True)
+CORS(app, origins=["*"], supports_credentials=True)
 
 # Path to your Excel file
 try:
-    # Using the correct filename
+    # Using a more generic key that doesn't mention cumin
     DATA_FILES = {
-        "cumin_data.xlsx": pd.read_excel("Data_AI_Query.xlsx")
+        "food_data.xlsx": pd.read_excel("Data_AI_Query.xlsx")
     }
     print("Data file loaded successfully")
 except Exception as e:
     print(f"Error loading data file: {str(e)}")
     # Create empty DataFrame as fallback
     DATA_FILES = {
-        "cumin_data.xlsx": pd.DataFrame()
+        "food_data.xlsx": pd.DataFrame()
     }
 
 # Configure Gemini API
@@ -246,7 +246,7 @@ Only provide the raw Python code without any explanation or formatting.
 Your output will be executed directly, so make sure to set the variable 'result' with the final output.
 
 The code should directly use DataFrames from data_files:
-df = data_files["cumin_data.xlsx"]
+df = data_files["food_data.xlsx"]
 Use pandas and numpy only in the code
 NEVER use pd.read_csv() or pd.read_excel() again. The DataFrame is already loaded.
 
@@ -263,7 +263,7 @@ IMPORTANT: Do not define functions in your code. Write the code to directly proc
         print("Cleaned code to execute:\n", generated_code)
         
         # Step 2: Execute the generated code
-        local_vars = {"pd": pd, "np": np, "data_files": DATA_FILES, "result": None}
+        local_vars = {"pd": pd, "np": np, "data_files": DATA_FILES, "df": DATA_FILES["food_data.xlsx"], "result": None}
         exec(generated_code, globals(), local_vars)
         
         # Extract the result from the local variables
