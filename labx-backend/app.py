@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import pandas as pd
 import numpy as np
@@ -8,18 +8,27 @@ import re
 import json
 
 app = Flask(__name__)
-CORS(app, origins=["*"], supports_credentials=True)
+CORS(app, 
+     resources={
+         r"/*": {
+             "origins": ["http://localhost:3000", "http://localhost:3001"],
+             "methods": ["GET", "POST", "OPTIONS"],
+             "allow_headers": ["Content-Type", "Authorization"],
+             "expose_headers": ["Content-Type"],
+             "supports_credentials": True,
+             "max_age": 120
+         }
+     }
+)
 
 # Path to your Excel file
 try:
-    # Using a more generic key that doesn't mention cumin
     DATA_FILES = {
-        "food_data.xlsx": pd.read_excel("Data_AI_Query.xlsx")
+        "food_data.xlsx": pd.read_excel("AI_Analytics_Data.xlsx")
     }
     print("Data file loaded successfully")
 except Exception as e:
     print(f"Error loading data file: {str(e)}")
-    # Create empty DataFrame as fallback
     DATA_FILES = {
         "food_data.xlsx": pd.DataFrame()
     }
@@ -316,5 +325,15 @@ IMPORTANT: Do not define functions in your code. Write the code to directly proc
         print(f"Error processing query: {str(e)}\n{error_details}")
         return jsonify({"result": [{"type": "text", "content": f"Error processing query: {str(e)}"}]}), 500
 
+@app.route('/download', methods=['GET'])
+def download_file():
+    try:
+        return send_file('AI_Analytics_Data.xlsx',
+                        mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                        as_attachment=True,
+                        download_name='AI_Analytics_Data.xlsx')
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5001)

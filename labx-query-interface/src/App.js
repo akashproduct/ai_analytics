@@ -1,30 +1,75 @@
 import React, { useState } from 'react';
-import { 
-  ChakraProvider, 
-  Box, 
-  Input, 
-  Button, 
-  VStack, 
-  Heading, 
+import axios from 'axios';
+import {
+  Chart as ChartJS,
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Pie, Bar } from 'react-chartjs-2';
+import {
+  ChakraProvider,
+  Container,
+  Input,
+  Button,
+  VStack,
   Text,
+  Box,
   Spinner,
-  Card,
-  CardBody,
-  CardHeader,
+  Flex,
   Table,
   Thead,
   Tbody,
   Tr,
   Th,
-  Td
+  Td,
+  Card,
+  CardBody,
+  CardHeader,
+  Heading,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
-import axios from 'axios';
-import { Pie, Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title } from 'chart.js';
 
 // Register ChartJS components
-ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title);
+ChartJS.register(
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartDataLabels
+);
+
+const safetyColorMap = {
+  'Safe': '#2ECC71',  // Green
+  'Unsafe': '#E74C3C', // Red
+  'Sub-Standard': '#F39C12', // Orange
+  'Mis-Labelled': '#95A5A6', // Grey
+  'Compliant as per FSSR': '#2ECC71', // Green
+};
+
+// Default colors for non-safety charts
+const defaultColors = [
+  'rgba(54, 162, 235, 0.7)',   // Blue
+  'rgba(255, 99, 132, 0.7)',   // Pink
+  'rgba(255, 206, 86, 0.7)',   // Yellow
+  'rgba(75, 192, 192, 0.7)',   // Teal
+  'rgba(153, 102, 255, 0.7)',  // Purple
+  'rgba(255, 159, 64, 0.7)',   // Orange
+  'rgba(199, 199, 199, 0.7)',  // Grey
+  'rgba(83, 102, 255, 0.7)',   // Blue-Purple
+  'rgba(40, 159, 64, 0.7)',    // Green
+  'rgba(210, 199, 199, 0.7)',  // Light Grey
+];
+
+const defaultBorderColors = defaultColors.map(color => color.replace('0.7', '1'));
 
 // Component to render different visualization types
 const Visualization = ({ data }) => {
@@ -41,35 +86,24 @@ const Visualization = ({ data }) => {
       );
       
     case 'pie':
+      // Check if this is a safety/compliance chart
+      const isSafetyChart = data.labels.some(label => safetyColorMap[label]);
+      
+      const backgroundColor = isSafetyChart
+        ? data.labels.map(label => safetyColorMap[label] || defaultColors[0])
+        : defaultColors.slice(0, data.labels.length);
+        
+      const borderColor = isSafetyChart
+        ? backgroundColor
+        : defaultBorderColors.slice(0, data.labels.length);
+
       const pieData = {
         labels: data.labels,
         datasets: [
           {
             data: data.values,
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.7)',
-              'rgba(54, 162, 235, 0.7)',
-              'rgba(255, 206, 86, 0.7)',
-              'rgba(75, 192, 192, 0.7)',
-              'rgba(153, 102, 255, 0.7)',
-              'rgba(255, 159, 64, 0.7)',
-              'rgba(199, 199, 199, 0.7)',
-              'rgba(83, 102, 255, 0.7)',
-              'rgba(40, 159, 64, 0.7)',
-              'rgba(210, 199, 199, 0.7)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-              'rgba(199, 199, 199, 1)',
-              'rgba(83, 102, 255, 1)',
-              'rgba(40, 159, 64, 1)',
-              'rgba(210, 199, 199, 1)',
-            ],
+            backgroundColor,
+            borderColor,
             borderWidth: 1,
           },
         ],
@@ -88,9 +122,43 @@ const Visualization = ({ data }) => {
                   maintainAspectRatio: false,
                   plugins: {
                     legend: {
+                      position: 'right',
                       labels: {
                         color: 'white',
+                        usePointStyle: true,
+                        padding: 20,
+                        font: {
+                          size: 12
+                        }
                       }
+                    },
+                    tooltip: {
+                      callbacks: {
+                        label: (context) => {
+                          const label = context.label || '';
+                          const value = context.raw || 0;
+                          const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                          const percentage = ((value / total) * 100).toFixed(1);
+                          return `${label}: ${value} (${percentage}%)`;
+                        }
+                      }
+                    },
+                    datalabels: {
+                      display: true,
+                      color: 'white',
+                      font: {
+                        weight: 'bold',
+                        size: 11
+                      },
+                      formatter: (value, ctx) => {
+                        const dataset = ctx.chart.data.datasets[0];
+                        const total = dataset.data.reduce((acc, data) => acc + data, 0);
+                        const percentage = ((value / total) * 100).toFixed(1);
+                        return `${percentage}%`;
+                      },
+                      anchor: 'end',
+                      align: 'start',
+                      offset: 8
                     }
                   }
                 }} 
@@ -105,7 +173,6 @@ const Visualization = ({ data }) => {
         labels: data.labels,
         datasets: [
           {
-            label: data.title,
             data: data.values,
             backgroundColor: 'rgba(153, 102, 255, 0.7)',
             borderColor: 'rgba(153, 102, 255, 1)',
@@ -125,20 +192,38 @@ const Visualization = ({ data }) => {
                 data={barData} 
                 options={{ 
                   maintainAspectRatio: false,
-                  scales: {
-                    y: {
-                      ticks: { color: 'white' },
-                      grid: { color: 'rgba(255, 255, 255, 0.1)' }
-                    },
-                    x: {
-                      ticks: { color: 'white' },
-                      grid: { color: 'rgba(255, 255, 255, 0.1)' }
-                    }
-                  },
                   plugins: {
                     legend: {
-                      labels: {
-                        color: 'white',
+                      display: false
+                    },
+                    datalabels: {
+                      display: true,
+                      color: 'white',
+                      anchor: 'end',
+                      align: 'top',
+                      offset: 4,
+                      font: {
+                        weight: 'bold'
+                      },
+                      formatter: (value) => value
+                    }
+                  },
+                  scales: {
+                    y: {
+                      beginAtZero: true,
+                      grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                      },
+                      ticks: {
+                        color: 'white'
+                      }
+                    },
+                    x: {
+                      grid: {
+                        display: false
+                      },
+                      ticks: {
+                        color: 'white'
                       }
                     }
                   }
@@ -167,9 +252,21 @@ const Visualization = ({ data }) => {
               <Tbody>
                 {data.rows.map((row, rowIndex) => (
                   <Tr key={rowIndex}>
-                    {row.map((cell, cellIndex) => (
-                      <Td key={cellIndex}>{cell === null || cell === undefined || String(cell) === "NaN" ? "-" : cell}</Td>
-                    ))}
+                    {Array.isArray(row) ? (
+                      // If row is an array, render directly
+                      row.map((cell, cellIndex) => (
+                        <Td key={cellIndex}>
+                          {cell === null || cell === undefined || String(cell) === "NaN" ? "-" : cell}
+                        </Td>
+                      ))
+                    ) : (
+                      // If row is an object, map through headers to get values
+                      data.headers.map((header, cellIndex) => (
+                        <Td key={cellIndex}>
+                          {row[header] === null || row[header] === undefined || String(row[header]) === "NaN" ? "-" : row[header]}
+                        </Td>
+                      ))
+                    )}
                   </Tr>
                 ))}
               </Tbody>
@@ -375,22 +472,26 @@ function App() {
     setLoading(true);
   
     if (useSampleData) {
-      // Use the sample data for testing without making API calls
       setTimeout(() => {
         setVisualizations(sampleData.result);
         setLoading(false);
-      }, 500); // Simulate network delay
+      }, 500);
       return;
     }
   
     try {
-      // const response = await axios.post('https://labx-query.vercel.app/query', { query });
-      const response = await axios.post('http://localhost:5000/query', { query });
-      // const response = await axios.post('https://2da4-2409-40d1-a-3af9-f172-4049-6c21-e7b9.ngrok-free.app/query', { query });
+      const response = await axios.post('http://localhost:5001/query', 
+        { query },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          withCredentials: true,
+        }
+      );
 
       console.log("Full Response:", response);
   
-      // Ensure response.data is a JSON object
       let data = response.data;
       if (typeof data === "string") {
         try {
@@ -401,12 +502,7 @@ function App() {
         }
       }
   
-      console.log("Parsed Response Data:", data);
-      console.log("Result:", data?.result);
-  
-      // Directly use the result array from the response
       if (data && Array.isArray(data.result)) {
-        console.log("herhehehehe");
         setVisualizations(data.result);
       } else {
         console.error('Unexpected response structure:', data);
@@ -419,10 +515,23 @@ function App() {
       }
     } catch (error) {
       console.error('Error:', error);
+      let errorMessage = "An error occurred while processing your query.";
+      
+      if (error.response) {
+        // Server responded with an error
+        errorMessage = `Server error: ${error.response.data.message || error.response.statusText}`;
+      } else if (error.request) {
+        // Request was made but no response received
+        errorMessage = "Could not connect to the server. Please ensure the backend server is running.";
+      } else {
+        // Error in request setup
+        errorMessage = error.message;
+      }
+      
       setVisualizations([
         {
           type: "text",
-          content: `Error processing your query: ${error.message}. Please try again.`
+          content: errorMessage
         }
       ]);
     } finally {
@@ -430,6 +539,9 @@ function App() {
     }
   };
   
+  const handleDownload = () => {
+    window.open('http://localhost:5001/download', '_blank');
+  };
 
   return (
     <ChakraProvider>
@@ -439,70 +551,74 @@ function App() {
         color="white" 
         p={5}
       >
-        <VStack spacing={8} align="stretch">
-          <Heading as="h1" size="xl" textAlign="center" color="purple.400">
-            Lab Analytics Query Interface
-          </Heading>
-          
-          <Card bg="gray.800" borderRadius="md">
-            <CardBody>
-              <form onSubmit={handleSubmit}>
-                <Box display="flex" flexDirection={["column", "row"]} gap={2}>
-                  <Input
-                    placeholder="Enter your query (e.g., Show pending lab tests in Punjab)"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    size="lg"
-                    bg="gray.700"
-                    border="none"
-                    color="white"
-                  />
-                  <Button 
-                    type="submit" 
-                    colorScheme="purple" 
-                    size="lg"
-                    leftIcon={<SearchIcon />}
-                    isLoading={loading}
-                    minW={["full", "150px"]}
-                  >
-                    Query
-                  </Button>
-                </Box>
-                
-                {/* For testing/development purposes */}
-                <Box mt={2} display="flex" alignItems="center">
-                  <Button
-                    size="sm"
-                    colorScheme={useSampleData ? "green" : "gray"}
-                    variant="outline"
-                    onClick={() => {
-                      setUseSampleData(!useSampleData);
-                      if (!useSampleData) {
-                        setQuery("Show pending lab tests in Punjab");
-                      }
-                    }}
-                    mr={2}
-                  >
-                    {useSampleData ? "Using Sample Data" : "Use Sample Data"}
-                  </Button>
-                  <Text fontSize="sm" color="gray.400">
-                    {useSampleData ? "Click to disable sample data mode" : "Enable for testing without backend"}
-                  </Text>
-                </Box>
-              </form>
-            </CardBody>
-          </Card>
+        <Container maxW="container.xl" py={5}>
+          <VStack spacing={5} align="stretch">
+            <Text fontSize="2xl" fontWeight="bold" textAlign="center">
+              LabX Query Interface
+            </Text>
+            
+            <Flex justifyContent="space-between" alignItems="center">
+              <Button colorScheme="teal" onClick={handleDownload}>
+                Download Dataset
+              </Button>
+            </Flex>
 
-          {loading && <Spinner size="xl" color="purple.400" alignSelf="center" />}
+            <form onSubmit={handleSubmit}>
+              <Box display="flex" flexDirection={["column", "row"]} gap={2}>
+                <Input
+                  placeholder="Enter your query (e.g., Show pending lab tests in Punjab)"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  size="lg"
+                  bg="gray.700"
+                  border="none"
+                  color="white"
+                />
+                <Button 
+                  type="submit" 
+                  colorScheme="purple" 
+                  size="lg"
+                  leftIcon={<SearchIcon />}
+                  isLoading={loading}
+                  minW={["full", "150px"]}
+                >
+                  Query
+                </Button>
+              </Box>
+              
+              {/* For testing/development purposes */}
+              <Box mt={2} display="flex" alignItems="center">
+                <Button
+                  size="sm"
+                  colorScheme={useSampleData ? "green" : "gray"}
+                  variant="outline"
+                  onClick={() => {
+                    setUseSampleData(!useSampleData);
+                    if (!useSampleData) {
+                      setQuery("Show pending lab tests in Punjab");
+                    }
+                  }}
+                  mr={2}
+                >
+                  {useSampleData ? "Using Sample Data" : "Use Sample Data"}
+                </Button>
+                <Text fontSize="sm" color="gray.400">
+                  {useSampleData ? "Click to disable sample data mode" : "Enable for testing without backend"}
+                </Text>
+              </Box>
+            </form>
 
-          {visualizations && !loading && (
-            <VStack spacing={4} align="stretch">
-              {visualizations.map((visualization, index) => (
-                <Visualization key={index} data={visualization} />
-              ))}
-            </VStack>
-          )}
-        </VStack>
+            {loading && <Spinner size="xl" color="purple.400" alignSelf="center" />}
+
+            {visualizations && !loading && (
+              <VStack spacing={4} align="stretch">
+                {visualizations.map((visualization, index) => (
+                  <Visualization key={index} data={visualization} />
+                ))}
+              </VStack>
+            )}
+          </VStack>
+        </Container>
       </Box>
     </ChakraProvider>
   );
