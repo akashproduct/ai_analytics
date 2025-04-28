@@ -34,7 +34,7 @@ except Exception as e:
     }
 
 # Configure Gemini API
-genai.configure(api_key="AIzaSyCXOZuigFYS739y0u-5P3Z4cYYx9__lJ98")  # Replace with your actual API key
+genai.configure(api_key=os.environ.get("GOOGLE_API_KEY"))  # Now loads from environment variable
 
 def clean_generated_code(code):
     """
