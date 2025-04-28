@@ -480,7 +480,7 @@ function App() {
     }
   
     try {
-      const response = await axios.post('http://localhost:5001/query', 
+      const response = await axios.post('https://ai-analytics-x6m3.onrender.com/query', 
         { query },
         {
           headers: {
