@@ -9,21 +9,19 @@ import json
 
 app = Flask(__name__)
 CORS(app, 
-     resources={
-         r"/*": {
-             "origins": ["http://localhost:3000", "http://localhost:3001", "https://ai-analytics-ivory.vercel.app"],
-             "methods": ["GET", "POST", "OPTIONS"],
-             "allow_headers": ["Content-Type", "Authorization"],
-             "expose_headers": ["Content-Type"],
-             "max_age": 120
-         }
-     }
+     origins=["https://ai-analytics-ivory.vercel.app"],
+     methods=["GET", "POST", "OPTIONS"],
+     allow_headers=["Content-Type", "Authorization"],
+     expose_headers=["Content-Type"],
+     max_age=120
 )
 
 # Path to your Excel file
+EXCEL_FILE_PATH = os.path.join(os.path.dirname(__file__), "AI_Analytics_Data.xlsx")
+
 try:
     DATA_FILES = {
-        "food_data.xlsx": pd.read_excel("AI_Analytics_Data.xlsx")
+        "food_data.xlsx": pd.read_excel(EXCEL_FILE_PATH)
     }
     print("Data file loaded successfully")
 except Exception as e:
@@ -327,7 +325,7 @@ IMPORTANT: Do not define functions in your code. Write the code to directly proc
 @app.route('/download', methods=['GET'])
 def download_file():
     try:
-        return send_file('AI_Analytics_Data.xlsx',
+        return send_file(EXCEL_FILE_PATH,
                         mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                         as_attachment=True,
                         download_name='AI_Analytics_Data.xlsx')
@@ -335,4 +333,5 @@ def download_file():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get("PORT", 5001))
+    app.run(host="0.0.0.0", port=port)
