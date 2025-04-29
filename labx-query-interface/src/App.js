@@ -485,8 +485,7 @@ function App() {
         {
           headers: {
             'Content-Type': 'application/json',
-          },
-          withCredentials: true,
+          }
         }
       );
 
@@ -540,7 +539,7 @@ function App() {
   };
   
   const handleDownload = () => {
-    window.open('http://localhost:5001/download', '_blank');
+    window.open('https://ai-analytics-x6m3.onrender.com/download', '_blank');
   };
 
   return (

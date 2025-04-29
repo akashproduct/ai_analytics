@@ -11,11 +11,10 @@ app = Flask(__name__)
 CORS(app, 
      resources={
          r"/*": {
-             "origins": ["http://localhost:3000", "http://localhost:3001"],
+             "origins": ["http://localhost:3000", "http://localhost:3001", "https://ai-analytics-ivory.vercel.app"],
              "methods": ["GET", "POST", "OPTIONS"],
              "allow_headers": ["Content-Type", "Authorization"],
              "expose_headers": ["Content-Type"],
-             "supports_credentials": True,
              "max_age": 120
          }
      }
