@@ -6,9 +6,11 @@
       "src": "/.*",
       "dest": "app.py",
       "headers": {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://ai-analytics-ivory.vercel.app",
         "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Expose-Headers": "Content-Type",
+        "Access-Control-Max-Age": "120"
       }
     }
   ]
