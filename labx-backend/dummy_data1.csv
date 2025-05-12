@@ -1,0 +1,201 @@
+Sample ID,Region,Test Type,Status,Test Date,Rejection Reason
+SAMPLE-1,Punjab,Coriander,Pending,2025-03-17,None
+SAMPLE-2,Punjab,Red Chili,Rejected,2025-03-19,Contamination
+SAMPLE-3,Karnataka,Coriander,Pending,2025-02-17,None
+SAMPLE-4,Punjab,Black Pepper,Pending,2025-01-29,None
+SAMPLE-5,Punjab,Cumin,Completed,2025-03-07,None
+SAMPLE-6,Karnataka,Cumin,Rejected,2025-03-15,None
+SAMPLE-7,Punjab,Turmeric,Pending,2025-03-18,None
+SAMPLE-8,Karnataka,Red Chili,Pending,2025-01-16,None
+SAMPLE-9,Karnataka,Cumin,Rejected,2025-01-08,None
+SAMPLE-10,Gujarat,Black Pepper,Completed,2025-02-02,None
+SAMPLE-11,Delhi,Cumin,Completed,2025-03-30,None
+SAMPLE-12,Gujarat,Red Chili,Rejected,2025-03-16,None
+SAMPLE-13,Punjab,Red Chili,Pending,2025-03-17,None
+SAMPLE-14,Gujarat,Red Chili,Rejected,2025-03-23,Contamination
+SAMPLE-15,Gujarat,Coriander,Rejected,2025-03-26,None
+SAMPLE-16,Karnataka,Red Chili,Rejected,2025-01-02,Contamination
+SAMPLE-17,Gujarat,Cumin,Completed,2025-03-08,None
+SAMPLE-18,Karnataka,Black Pepper,Rejected,2025-02-19,None
+SAMPLE-19,Karnataka,Red Chili,Completed,2025-03-28,None
+SAMPLE-20,Punjab,Turmeric,Completed,2025-02-14,None
+SAMPLE-21,Karnataka,Coriander,Pending,2025-01-03,None
+SAMPLE-22,Maharashtra,Red Chili,Pending,2025-02-06,None
+SAMPLE-23,Maharashtra,Coriander,Completed,2025-01-04,None
+SAMPLE-24,Maharashtra,Turmeric,Pending,2025-02-17,None
+SAMPLE-25,Delhi,Black Pepper,Pending,2025-01-11,None
+SAMPLE-26,Delhi,Turmeric,Completed,2025-03-30,None
+SAMPLE-27,Punjab,Red Chili,Completed,2025-02-09,None
+SAMPLE-28,Delhi,Turmeric,Completed,2025-01-17,None
+SAMPLE-29,Punjab,Cumin,Pending,2025-01-07,None
+SAMPLE-30,Maharashtra,Black Pepper,Pending,2025-03-10,None
+SAMPLE-31,Gujarat,Red Chili,Rejected,2025-01-30,Incorrect Sample
+SAMPLE-32,Maharashtra,Coriander,Pending,2025-03-25,None
+SAMPLE-33,Maharashtra,Cumin,Completed,2025-01-13,None
+SAMPLE-34,Delhi,Coriander,Completed,2025-01-19,None
+SAMPLE-35,Gujarat,Black Pepper,Rejected,2025-03-27,Incorrect Sample
+SAMPLE-36,Punjab,Turmeric,Pending,2025-01-14,None
+SAMPLE-37,Delhi,Turmeric,Rejected,2025-02-22,None
+SAMPLE-38,Maharashtra,Black Pepper,Completed,2025-01-17,None
+SAMPLE-39,Delhi,Black Pepper,Rejected,2025-03-24,Contamination
+SAMPLE-40,Punjab,Turmeric,Pending,2025-02-05,None
+SAMPLE-41,Maharashtra,Turmeric,Completed,2025-03-21,None
+SAMPLE-42,Gujarat,Turmeric,Pending,2025-01-19,None
+SAMPLE-43,Punjab,Coriander,Rejected,2025-03-05,None
+SAMPLE-44,Maharashtra,Black Pepper,Completed,2025-01-06,None
+SAMPLE-45,Karnataka,Cumin,Completed,2025-02-21,None
+SAMPLE-46,Karnataka,Cumin,Rejected,2025-03-11,Contamination
+SAMPLE-47,Maharashtra,Black Pepper,Rejected,2025-01-21,Incorrect Sample
+SAMPLE-48,Karnataka,Turmeric,Rejected,2025-01-06,Contamination
+SAMPLE-49,Karnataka,Turmeric,Completed,2025-01-16,None
+SAMPLE-50,Gujarat,Cumin,Rejected,2025-01-12,Incorrect Sample
+SAMPLE-51,Maharashtra,Turmeric,Pending,2025-03-14,None
+SAMPLE-52,Maharashtra,Red Chili,Completed,2025-03-20,None
+SAMPLE-53,Karnataka,Black Pepper,Pending,2025-01-25,None
+SAMPLE-54,Karnataka,Turmeric,Rejected,2025-01-02,Contamination
+SAMPLE-55,Maharashtra,Black Pepper,Pending,2025-01-09,None
+SAMPLE-56,Karnataka,Red Chili,Pending,2025-02-09,None
+SAMPLE-57,Delhi,Coriander,Pending,2025-03-06,None
+SAMPLE-58,Maharashtra,Black Pepper,Pending,2025-01-01,None
+SAMPLE-59,Punjab,Turmeric,Rejected,2025-02-20,Incorrect Sample
+SAMPLE-60,Maharashtra,Coriander,Pending,2025-03-24,None
+SAMPLE-61,Gujarat,Turmeric,Completed,2025-02-05,None
+SAMPLE-62,Maharashtra,Coriander,Rejected,2025-03-22,Incorrect Sample
+SAMPLE-63,Maharashtra,Turmeric,Completed,2025-01-31,None
+SAMPLE-64,Gujarat,Red Chili,Pending,2025-02-23,None
+SAMPLE-65,Maharashtra,Red Chili,Pending,2025-02-08,None
+SAMPLE-66,Punjab,Black Pepper,Pending,2025-03-18,None
+SAMPLE-67,Maharashtra,Turmeric,Completed,2025-01-09,None
+SAMPLE-68,Delhi,Turmeric,Completed,2025-02-18,None
+SAMPLE-69,Delhi,Black Pepper,Rejected,2025-03-08,None
+SAMPLE-70,Delhi,Cumin,Completed,2025-03-12,None
+SAMPLE-71,Punjab,Turmeric,Pending,2025-03-25,None
+SAMPLE-72,Delhi,Red Chili,Pending,2025-01-04,None
+SAMPLE-73,Gujarat,Red Chili,Pending,2025-02-09,None
+SAMPLE-74,Punjab,Coriander,Rejected,2025-03-16,None
+SAMPLE-75,Maharashtra,Coriander,Pending,2025-01-07,None
+SAMPLE-76,Delhi,Red Chili,Rejected,2025-01-29,None
+SAMPLE-77,Gujarat,Coriander,Rejected,2025-01-01,Incorrect Sample
+SAMPLE-78,Punjab,Red Chili,Rejected,2025-01-05,Incorrect Sample
+SAMPLE-79,Karnataka,Red Chili,Rejected,2025-03-08,Incorrect Sample
+SAMPLE-80,Maharashtra,Red Chili,Rejected,2025-03-26,Incorrect Sample
+SAMPLE-81,Delhi,Coriander,Pending,2025-01-17,None
+SAMPLE-82,Punjab,Black Pepper,Completed,2025-03-02,None
+SAMPLE-83,Punjab,Turmeric,Pending,2025-02-21,None
+SAMPLE-84,Maharashtra,Cumin,Rejected,2025-02-10,None
+SAMPLE-85,Punjab,Cumin,Pending,2025-03-02,None
+SAMPLE-86,Punjab,Cumin,Rejected,2025-02-10,None
+SAMPLE-87,Gujarat,Black Pepper,Completed,2025-02-28,None
+SAMPLE-88,Gujarat,Coriander,Pending,2025-03-27,None
+SAMPLE-89,Gujarat,Cumin,Rejected,2025-02-22,Contamination
+SAMPLE-90,Karnataka,Cumin,Pending,2025-03-25,None
+SAMPLE-91,Delhi,Coriander,Rejected,2025-02-03,Incorrect Sample
+SAMPLE-92,Karnataka,Cumin,Rejected,2025-02-23,Contamination
+SAMPLE-93,Gujarat,Coriander,Pending,2025-01-18,None
+SAMPLE-94,Maharashtra,Cumin,Rejected,2025-03-08,Incorrect Sample
+SAMPLE-95,Karnataka,Coriander,Completed,2025-01-01,None
+SAMPLE-96,Gujarat,Coriander,Rejected,2025-02-12,None
+SAMPLE-97,Gujarat,Cumin,Rejected,2025-01-27,None
+SAMPLE-98,Delhi,Black Pepper,Rejected,2025-02-09,Contamination
+SAMPLE-99,Delhi,Coriander,Completed,2025-01-29,None
+SAMPLE-100,Delhi,Coriander,Pending,2025-01-31,None
+SAMPLE-101,Gujarat,Red Chili,Pending,2025-02-27,None
+SAMPLE-102,Punjab,Cumin,Completed,2025-02-13,None
+SAMPLE-103,Maharashtra,Turmeric,Pending,2025-03-19,None
+SAMPLE-104,Maharashtra,Coriander,Pending,2025-03-19,None
+SAMPLE-105,Maharashtra,Cumin,Completed,2025-03-05,None
+SAMPLE-106,Karnataka,Red Chili,Rejected,2025-01-04,Incorrect Sample
+SAMPLE-107,Maharashtra,Red Chili,Pending,2025-02-09,None
+SAMPLE-108,Delhi,Cumin,Completed,2025-01-03,None
+SAMPLE-109,Punjab,Cumin,Rejected,2025-02-22,Contamination
+SAMPLE-110,Gujarat,Black Pepper,Pending,2025-03-26,None
+SAMPLE-111,Karnataka,Red Chili,Rejected,2025-01-10,Contamination
+SAMPLE-112,Gujarat,Black Pepper,Pending,2025-02-19,None
+SAMPLE-113,Maharashtra,Red Chili,Completed,2025-03-22,None
+SAMPLE-114,Punjab,Coriander,Completed,2025-01-05,None
+SAMPLE-115,Delhi,Red Chili,Completed,2025-02-04,None
+SAMPLE-116,Karnataka,Red Chili,Completed,2025-02-16,None
+SAMPLE-117,Delhi,Coriander,Completed,2025-03-19,None
+SAMPLE-118,Delhi,Black Pepper,Completed,2025-02-10,None
+SAMPLE-119,Gujarat,Cumin,Pending,2025-02-15,None
+SAMPLE-120,Gujarat,Turmeric,Pending,2025-02-21,None
+SAMPLE-121,Maharashtra,Black Pepper,Completed,2025-01-02,None
+SAMPLE-122,Delhi,Red Chili,Completed,2025-01-25,None
+SAMPLE-123,Delhi,Coriander,Rejected,2025-01-07,Incorrect Sample
+SAMPLE-124,Gujarat,Turmeric,Rejected,2025-02-21,Contamination
+SAMPLE-125,Delhi,Cumin,Completed,2025-02-20,None
+SAMPLE-126,Delhi,Coriander,Pending,2025-02-18,None
+SAMPLE-127,Delhi,Coriander,Completed,2025-01-25,None
+SAMPLE-128,Punjab,Cumin,Rejected,2025-01-22,Contamination
+SAMPLE-129,Karnataka,Black Pepper,Completed,2025-02-13,None
+SAMPLE-130,Delhi,Black Pepper,Completed,2025-01-27,None
+SAMPLE-131,Delhi,Black Pepper,Pending,2025-01-09,None
+SAMPLE-132,Punjab,Red Chili,Completed,2025-03-23,None
+SAMPLE-133,Punjab,Turmeric,Pending,2025-03-31,None
+SAMPLE-134,Gujarat,Coriander,Completed,2025-01-27,None
+SAMPLE-135,Gujarat,Black Pepper,Completed,2025-02-17,None
+SAMPLE-136,Maharashtra,Coriander,Pending,2025-01-21,None
+SAMPLE-137,Gujarat,Coriander,Completed,2025-02-14,None
+SAMPLE-138,Delhi,Coriander,Pending,2025-01-26,None
+SAMPLE-139,Karnataka,Coriander,Completed,2025-02-03,None
+SAMPLE-140,Karnataka,Red Chili,Completed,2025-03-28,None
+SAMPLE-141,Gujarat,Black Pepper,Completed,2025-02-02,None
+SAMPLE-142,Maharashtra,Black Pepper,Completed,2025-01-23,None
+SAMPLE-143,Punjab,Cumin,Rejected,2025-03-19,None
+SAMPLE-144,Gujarat,Turmeric,Completed,2025-01-04,None
+SAMPLE-145,Karnataka,Turmeric,Rejected,2025-03-12,Contamination
+SAMPLE-146,Punjab,Coriander,Pending,2025-03-10,None
+SAMPLE-147,Maharashtra,Coriander,Rejected,2025-03-13,None
+SAMPLE-148,Karnataka,Turmeric,Rejected,2025-02-25,Contamination
+SAMPLE-149,Punjab,Coriander,Pending,2025-03-18,None
+SAMPLE-150,Maharashtra,Black Pepper,Completed,2025-02-18,None
+SAMPLE-151,Delhi,Coriander,Rejected,2025-03-17,None
+SAMPLE-152,Maharashtra,Black Pepper,Rejected,2025-03-05,Contamination
+SAMPLE-153,Maharashtra,Black Pepper,Pending,2025-02-18,None
+SAMPLE-154,Gujarat,Turmeric,Pending,2025-03-17,None
+SAMPLE-155,Punjab,Black Pepper,Completed,2025-02-28,None
+SAMPLE-156,Karnataka,Cumin,Pending,2025-01-01,None
+SAMPLE-157,Karnataka,Black Pepper,Pending,2025-03-28,None
+SAMPLE-158,Maharashtra,Black Pepper,Completed,2025-03-17,None
+SAMPLE-159,Maharashtra,Black Pepper,Pending,2025-01-01,None
+SAMPLE-160,Maharashtra,Cumin,Pending,2025-01-06,None
+SAMPLE-161,Delhi,Turmeric,Rejected,2025-01-04,Contamination
+SAMPLE-162,Punjab,Black Pepper,Pending,2025-03-18,None
+SAMPLE-163,Maharashtra,Coriander,Pending,2025-01-22,None
+SAMPLE-164,Punjab,Red Chili,Pending,2025-02-01,None
+SAMPLE-165,Maharashtra,Black Pepper,Rejected,2025-01-31,Incorrect Sample
+SAMPLE-166,Karnataka,Coriander,Pending,2025-03-05,None
+SAMPLE-167,Karnataka,Black Pepper,Pending,2025-01-27,None
+SAMPLE-168,Gujarat,Coriander,Rejected,2025-02-22,Incorrect Sample
+SAMPLE-169,Karnataka,Turmeric,Pending,2025-01-02,None
+SAMPLE-170,Karnataka,Turmeric,Rejected,2025-03-23,None
+SAMPLE-171,Punjab,Coriander,Pending,2025-01-24,None
+SAMPLE-172,Punjab,Turmeric,Completed,2025-03-12,None
+SAMPLE-173,Delhi,Black Pepper,Completed,2025-02-25,None
+SAMPLE-174,Maharashtra,Cumin,Pending,2025-02-02,None
+SAMPLE-175,Gujarat,Black Pepper,Pending,2025-01-19,None
+SAMPLE-176,Karnataka,Turmeric,Completed,2025-01-28,None
+SAMPLE-177,Maharashtra,Turmeric,Rejected,2025-01-16,Contamination
+SAMPLE-178,Maharashtra,Coriander,Completed,2025-01-03,None
+SAMPLE-179,Karnataka,Turmeric,Pending,2025-03-13,None
+SAMPLE-180,Punjab,Cumin,Completed,2025-01-03,None
+SAMPLE-181,Delhi,Red Chili,Rejected,2025-02-17,Contamination
+SAMPLE-182,Karnataka,Black Pepper,Completed,2025-01-29,None
+SAMPLE-183,Delhi,Red Chili,Completed,2025-03-24,None
+SAMPLE-184,Maharashtra,Black Pepper,Completed,2025-02-21,None
+SAMPLE-185,Delhi,Red Chili,Completed,2025-02-24,None
+SAMPLE-186,Gujarat,Coriander,Rejected,2025-03-05,Incorrect Sample
+SAMPLE-187,Karnataka,Turmeric,Rejected,2025-03-02,Contamination
+SAMPLE-188,Gujarat,Black Pepper,Completed,2025-01-12,None
+SAMPLE-189,Gujarat,Turmeric,Pending,2025-01-05,None
+SAMPLE-190,Delhi,Turmeric,Completed,2025-02-28,None
+SAMPLE-191,Gujarat,Red Chili,Completed,2025-02-28,None
+SAMPLE-192,Maharashtra,Red Chili,Rejected,2025-01-13,None
+SAMPLE-193,Delhi,Black Pepper,Rejected,2024-12-31,Incorrect Sample
+SAMPLE-194,Karnataka,Coriander,Rejected,2025-01-22,None
+SAMPLE-195,Punjab,Coriander,Rejected,2025-02-20,None
+SAMPLE-196,Maharashtra,Coriander,Pending,2025-03-11,None
+SAMPLE-197,Gujarat,Coriander,Pending,2025-03-09,None
+SAMPLE-198,Karnataka,Red Chili,Rejected,2025-03-11,Contamination
+SAMPLE-199,Gujarat,Cumin,Pending,2025-02-08,None
+SAMPLE-200,Maharashtra,Cumin,Pending,2025-01-02,None
